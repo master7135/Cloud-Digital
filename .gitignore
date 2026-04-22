@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+env/
+venv/
+.env
+.DS_Store
+Thumbs.db
+node_modules/
+dist/
+.wrangler/
+.dev.vars
+worker-configuration.d.ts
