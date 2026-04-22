@@ -1,1 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cloud Digital is a digital agency landing page built for Render with Python, HTML, CSS, and JavaScript."
+    />
+    <title>Cloud Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="#top" data-scroll>
+          <span class="brand-mark brand-mark-image">
+            <img src="{{ url_for('static', filename='images/logo-green.png') }}" alt="Cloud Digital logo" />
+          </span>
+          <span class="brand-text">Cloud <span>Digital</span></span>
+        </a>
 
+        <nav class="nav-links">
+          <a href="#services" data-scroll>Services</a>
+          <a href="#work" data-scroll>Work</a>
+          <a href="#about" data-scroll>About</a>
+          <a href="#contact" data-scroll>Contact</a>
+        </nav>
+
+        <a class="button button-solid header-cta" href="tel:+918983623213">Get in Touch</a>
+
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <div class="mobile-nav">
+        <a href="#services" data-scroll>Services</a>
+        <a href="#work" data-scroll>Work</a>
+        <a href="#about" data-scroll>About</a>
+        <a href="#contact" data-scroll>Contact</a>
+        <a class="button button-solid" href="tel:+918983623213">Get in Touch</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-grid"></div>
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+
+        <div class="shell hero-shell">
+          <div class="eyebrow">Now accepting new projects for 2026</div>
+          <h1>We build websites that <span>exceed your expectations.</span></h1>
+          <p class="hero-copy">
+            A digital agency obsessed with results. We craft beautiful, high-performance
+            websites that turn visitors into customers.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-solid" href="tel:+918983623213">Get in Touch</a>
+            <a class="button button-ghost" href="#work" data-scroll>View Our Work</a>
+          </div>
+
+          <div class="stats">
+            {% for stat in stats %}
+            <div class="stat">
+              <div class="stat-value">{{ stat.value }}</div>
+              <div class="stat-label">{{ stat.label }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <p class="section-tag">Our Services</p>
+            <h2>Everything you need to dominate online.</h2>
+            <p class="section-copy">
+              From concept to launch and beyond, we handle every part of your digital
+              presence so you can focus on running your business.
+            </p>
+          </div>
+
+          <div class="service-grid">
+            {% for service in services %}
+            <article class="service-card reveal">
+              <div class="service-icon">{{ service.icon }}</div>
+              <h3>{{ service.title }}</h3>
+              <p>{{ service.description }}</p>
+            </article>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="section work-section" id="work">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <p class="section-tag">Selected Work</p>
+            <h2>Projects we are proud of.</h2>
+          </div>
+
+          <div class="project-grid">
+            {% for project in projects %}
+            <article class="project-card reveal">
+              <img src="{{ project.image }}" alt="{{ project.title }}" />
+              <div class="project-overlay"></div>
+              <div class="project-content">
+                <p>{{ project.category }}</p>
+                <h3>{{ project.title }}</h3>
+              </div>
+            </article>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="shell">
+          <div class="section-heading section-heading-center reveal">
+            <p class="section-tag">Testimonials</p>
+            <h2>Words from our clients.</h2>
+          </div>
+
+          <div class="testimonial-grid">
+            {% for testimonial in testimonials %}
+            <article class="testimonial-card reveal">
+              <div class="quote-mark">"</div>
+              <p class="testimonial-copy">{{ testimonial.quote }}</p>
+              <div class="person">
+                <img src="{{ testimonial.avatar }}" alt="{{ testimonial.author }}" />
+                <div>
+                  <strong>{{ testimonial.author }}</strong>
+                  <span>{{ testimonial.role }}</span>
+                </div>
+              </div>
+            </article>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-section" id="contact">
+        <div class="shell cta-shell reveal">
+          <p class="section-tag">Let's work together</p>
+          <h2>Ready to build something extraordinary?</h2>
+          <p class="section-copy">
+            Tell us about your project and we will get back to you within 24 hours with a
+            free consultation and custom proposal.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-solid" href="tel:+918983623213">Get in Touch</a>
+            <a class="button button-ghost" href="tel:+918983623213">Schedule a Call</a>
+          </div>
+
+          <p class="trust-copy">No spam, ever. Your information stays private.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="site-footer">
+      <div class="shell footer-shell">
+        <div class="footer-brand">
+          <a class="brand" href="#top" data-scroll>
+            <span class="brand-mark brand-mark-image">
+              <img src="{{ url_for('static', filename='images/logo-green.png') }}" alt="Cloud Digital logo" />
+            </span>
+            <span class="brand-text">Cloud <span>Digital</span></span>
+          </a>
+          <p>
+            We are a digital agency passionate about crafting exceptional web experiences
+            that drive real business results.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Services</h3>
+          <a href="#services" data-scroll>Web Design</a>
+          <a href="#services" data-scroll>Development</a>
+          <a href="#services" data-scroll>E-Commerce</a>
+          <a href="#services" data-scroll>Branding</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Company</h3>
+          <a href="#about" data-scroll>About Us</a>
+          <a href="#work" data-scroll>Our Work</a>
+          <a href="#contact" data-scroll>Contact</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <span>Pune, India</span>
+          <span>hello@clouddigital.agency</span>
+          <span>+91 8983623213</span>
+        </div>
+      </div>
+
+      <div class="shell footer-bottom">
+        <p>&copy; {{ year }} Cloud Digital. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
