@@ -132,19 +132,30 @@
             <h2>Words from our clients.</h2>
           </div>
 
-          <div class="testimonial-grid">
-            {% for testimonial in testimonials %}
-            <article class="testimonial-card reveal">
-              <div class="quote-mark">"</div>
-              <p class="testimonial-copy">{{ testimonial.quote }}</p>
-              <div class="person">
-                <img src="{{ testimonial.avatar }}" alt="{{ testimonial.author }}" />
-                <div>
-                  <strong>{{ testimonial.author }}</strong>
-                  <span>{{ testimonial.role }}</span>
-                </div>
+          <div class="testimonial-wall reveal">
+            {% for lane in [0, 1] %}
+            <div class="testimonial-lane {% if lane == 1 %}is-reverse{% endif %}">
+              <div class="testimonial-track">
+                {% for _ in [0, 1] %}
+                  {% for testimonial in testimonials %}
+                  <article class="testimonial-card">
+                    <div class="testimonial-topline">
+                      <span class="testimonial-company">{{ testimonial.company }}</span>
+                      <span class="testimonial-rating">{{ testimonial.rating }} / 5</span>
+                    </div>
+                    <div class="quote-mark">"</div>
+                    <p class="testimonial-copy">{{ testimonial.quote }}</p>
+                    <div class="person">
+                      <img src="{{ testimonial.avatar }}" alt="{{ testimonial.author }}" />
+                      <div>
+                        <strong>{{ testimonial.author }}</strong>
+                      </div>
+                    </div>
+                  </article>
+                  {% endfor %}
+                {% endfor %}
               </div>
-            </article>
+            </div>
             {% endfor %}
           </div>
         </div>
